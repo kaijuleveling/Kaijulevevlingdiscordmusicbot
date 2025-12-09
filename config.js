@@ -22,14 +22,11 @@ module.exports = {
   errorLog: "", 
   nodes: [
      {
-      name: "Sakura",
-      password: "Sakura",
-      host: "ca-lavalink.aiko-project.xyz",
-      port: 2333,
+      name: "GlceYT",
+      password: "glace",
+      host: "us-01.strixnodes.com",
+      port: 8003,
       secure: false
     }
   ]
-
 }
-
-
