@@ -161,16 +161,6 @@ module.exports = {
                 );
             }
 
-            if (resolve.loadType === 'playlist') {
-                return sendErrorResponse(
-                    interaction,
-                    t.playlistNotSupported.title + '\n\n' +
-                    t.playlistNotSupported.message + '\n' +
-                    t.playlistNotSupported.note,
-                    5000
-                );
-            }
-
             const tracks = resolve.tracks.slice(0, 5);
             
             if (tracks.length === 0) {

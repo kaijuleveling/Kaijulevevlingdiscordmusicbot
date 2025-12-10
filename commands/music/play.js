@@ -13,7 +13,7 @@ const data = new SlashCommandBuilder()
   .setDescription("Play a song from a name or link")
   .addStringOption(option =>
     option.setName("name")
-      .setDescription("Enter song name / link or playlist")
+      .setDescription("Enter song name / link")
       .setRequired(true)
   );
 

@@ -55,8 +55,7 @@ async function connectToDatabase() {
     }
 }
 
-const db = client ? client.db("PrimeMusicSSRR") : null;
-const playlistCollection = db ? db.collection("SongPlayLists") : null;
+const db = client ? client.db("PrimeMusicSSRR") : null; 
 const autoplayCollection = db ? db.collection("AutoplaySettings") : null;
 const languageCollection = db ? db.collection("GuildLanguages") : null;
 
@@ -66,7 +65,6 @@ function getLanguageCollection() {
 
 module.exports = {
     connectToDatabase,
-    playlistCollection,
     autoplayCollection,
     getLanguageCollection,
 };

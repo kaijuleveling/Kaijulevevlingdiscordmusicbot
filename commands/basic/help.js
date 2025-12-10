@@ -14,7 +14,6 @@ const data = new SlashCommandBuilder()
       .addChoices(
         { name: "🏠 Main Menu", value: "main" },
         { name: "🎵 Music Commands", value: "music" },
-        { name: "📋 Playlist Commands", value: "playlist" },
         { name: "💜 Basic Commands", value: "basic" },
         { name: "🔧 Utility Commands", value: "utility" }
       )
@@ -22,7 +21,7 @@ const data = new SlashCommandBuilder()
 
 function getCommandCategory(commandName) {
   const commandsDir = path.resolve(__dirname, '../../commands');
-  const categoryFolders = ['basic', 'music', 'playlist', 'utility'];
+  const categoryFolders = ['basic', 'music', 'utility'];
   
   for (const folder of categoryFolders) {
     const folderPath = path.join(commandsDir, folder);
@@ -40,7 +39,6 @@ function getCommandCategory(commandName) {
 function groupCommandsByCategory(client) {
   const grouped = {
     music: [],
-    playlist: [],
     basic: [],
     utility: []
   };
@@ -99,7 +97,6 @@ async function showMainMenu(client, interaction, embedColor, totalCommands, tota
   components.push(new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Large));
 
   const musicCategory = t.categories.music;
-  const playlistCategory = t.categories.playlist;
   const basicCategory = t.categories.basic;
   const utilityCategory = t.categories.utility;
 
@@ -112,10 +109,6 @@ async function showMainMenu(client, interaction, embedColor, totalCommands, tota
           .replace('{emoji}', musicCategory.emoji)
           .replace('{name}', musicCategory.name)
           .replace('{count}', groupedCommands.music.length) + '\n' +
-        t.mainMenu.categories.playlist
-          .replace('{emoji}', playlistCategory.emoji)
-          .replace('{name}', playlistCategory.name)
-          .replace('{count}', groupedCommands.playlist.length) + '\n' +
         t.mainMenu.categories.basic
           .replace('{emoji}', basicCategory.emoji)
           .replace('{name}', basicCategory.name)
@@ -153,12 +146,6 @@ async function showMainMenu(client, interaction, embedColor, totalCommands, tota
         description: t.mainMenu.selectMenu.musicDescription.replace('{count}', groupedCommands.music.length),
         emoji: musicCategory.emoji,
         value: 'music'
-      },
-      {
-        label: playlistCategory.name,
-        description: t.mainMenu.selectMenu.playlistDescription.replace('{count}', groupedCommands.playlist.length),
-        emoji: playlistCategory.emoji,
-        value: 'playlist'
       },
       {
         label: basicCategory.name,

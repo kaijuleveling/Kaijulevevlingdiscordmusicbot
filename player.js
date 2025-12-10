@@ -8,7 +8,6 @@ const colors = require('./UI/colors/colors');
 const fs = require("fs").promises;
 const path = require("path");
 const axios = require('axios');
-const { autoplayCollection, playlistCollection } = require('./mongodb.js');
 const { initializeLavalinkManager, getLavalinkManager } = require('./lavalink.js');
 
 let getLangSync, getLang;

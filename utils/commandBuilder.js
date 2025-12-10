@@ -11,9 +11,6 @@ function getCommandDataFromLang(lang, commandName, category = null) {
     if (category === 'music' && lang.music && lang.music[commandName] && lang.music[commandName].command) {
       return lang.music[commandName].command;
     }
-    if (category === 'playlist' && lang.playlist && lang.playlist[commandName] && lang.playlist[commandName].command) {
-      return lang.playlist[commandName].command;
-    }
     if (category === 'utility' && lang.utility && lang.utility[commandName] && lang.utility[commandName].command) {
       return lang.utility[commandName].command;
     }
@@ -39,7 +36,6 @@ function buildCommandWithLanguage(commandModule, lang, filePath = '') {
   let category = null;
   
   if (filePath.includes('/music/') || filePath.includes('\\music\\')) category = 'music';
-  else if (filePath.includes('/playlist/') || filePath.includes('\\playlist\\')) category = 'playlist';
   else if (filePath.includes('/utility/') || filePath.includes('\\utility\\')) category = 'utility';
   else if (filePath.includes('/basic/') || filePath.includes('\\basic\\')) category = 'basic';
   
@@ -128,7 +124,7 @@ function loadCommandModulesOnce() {
     }
   };
   
-  const categoryFolders = ['basic', 'music', 'playlist', 'utility'];
+  const categoryFolders = ['basic', 'music', 'utility'];
   for (const folder of categoryFolders) {
     const folderPath = path.join(commandsDir, folder);
     if (fs.existsSync(folderPath)) {
