@@ -91,8 +91,8 @@ module.exports = {
             const footerSection = new SectionBuilder()
                 .addTextDisplayComponents(
                     (textDisplay) => textDisplay.setContent(
-                        `**Version 1.4** • Prime Music Bot\n` +
-                        `Developed by GlaceYT / https://GlaceYT.com`
+                        `**Version 27** • Kaiju Levevling Music Bot\n` +
+                        `Developed by Kaiju Leveling`
                     )
                 )
                 .setThumbnailAccessory(

@@ -184,7 +184,7 @@ async function showMainMenu(client, interaction, embedColor, totalCommands, tota
     new ButtonBuilder()
       .setLabel(t.mainMenu.buttons.github)
       .setStyle(ButtonStyle.Link)
-      .setURL('https://github.com/GlaceYT')
+      .setURL('https://github.com/kaijuleveling')
   );
 
   const response = {
@@ -309,7 +309,7 @@ async function showCategoryPage(client, interaction, categoryKey, embedColor, bo
     new ButtonBuilder()
       .setLabel(t.categoryPage.buttons.github)
       .setStyle(ButtonStyle.Link)
-      .setURL('https://github.com/GlaceYT')
+      .setURL('https://github.com/kaijuleveling')
   );
 
   const response = {

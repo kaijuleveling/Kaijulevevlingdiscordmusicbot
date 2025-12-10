@@ -69,8 +69,8 @@ module.exports = {
                 footer: "**Select a category below to view detailed commands.**"
             },
             footer: {
-                version: "**Version 1.4** • Prime Music Bot",
-                developer: "Developed by GlaceYT / https://GlaceYT.com"
+                version: "**Version 27** • Kaiju Levevling Music Bot",
+                developer: "Developed by Kaiju Leveling"
             },
             selectMenu: {
                 placeholder: "📂 Select a category to view commands...",
@@ -102,8 +102,8 @@ module.exports = {
                 noDescription: "No description available."
             },
             footer: {
-                version: "**Version 1.4** • Prime Music Bot",
-                developer: "Developed by GlaceYT / https://GlaceYT.com"
+                version: "**Version 27** • Kaiju Levevling Music Bot",
+                developer: "Developed by Kaiju Leveling"
             },
             buttons: {
                 backToMain: "🏠 Back to Main Menu",
@@ -175,8 +175,8 @@ module.exports = {
             }
         },
         footer: {
-            version: "**Version 1.4** • Prime Music Bot",
-            developer: "Developed by GlaceYT / https://GlaceYT.com"
+            version: "**Version 27** • Kaiju Levevling Music Bot",
+            developer: "Developed by Kaiju Leveling"
         },
         errors: {
             title: "## ❌ Error",
@@ -191,8 +191,8 @@ module.exports = {
         },
         header: {
             title: "# 📊 Bot Statistics",
-            botName: "**{botName}** - Prime Music Bot",
-            developer: "Developed by GlaceYT / https://GlaceYT.com"
+            botName: "**{botName}** - Kaiju Levevling Music Bot",
+            developer: "Developed by Kaiju Leveling"
         },
         botInfo: {
             title: "## 📊 Bot Information",
@@ -228,8 +228,8 @@ module.exports = {
             commands: "• Commands: {count}"
         },
         footer: {
-            version: "**Version 1.4** • Prime Music Bot",
-            developer: "Developed by GlaceYT / https://GlaceYT.com"
+            version: "**Version 27** • Kaiju Levevling Music Bot",
+            developer: "Developed by Kaiju Leveling"
         },
         errors: {
             title: "## ❌ Error",
@@ -271,8 +271,8 @@ module.exports = {
             }
         },
         footer: {
-            version: "**Version 1.4** • Prime Music Bot",
-            developer: "Developed by GlaceYT / https://GlaceYT.com"
+            version: "**Version 27** • Kaiju Levevling Music Bot",
+            developer: "Developed by Kaiju Leveling"
         },
         buttons: {
             supportServer: "Support Server",
