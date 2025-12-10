@@ -22,11 +22,12 @@ module.exports = {
   errorLog: "", 
   nodes: [
      {
-      name: "GlceYT",
-      password: "glace",
-      host: "us-01.strixnodes.com",
-      port: 8003,
+      name: "Harmonix V4",
+      password: "Kaun.Yuvraj",
+      host: "pnode1.danbot.host",
+      port: 1186,
       secure: false
     }
   ]
+
 }
