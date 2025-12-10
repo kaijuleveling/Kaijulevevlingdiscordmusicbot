@@ -15,9 +15,10 @@ module.exports = {
             
             await interaction.deferReply();
 
-            const supportServerLink = "discord.com/invite/SFVNAShZwK";
-            const githubLink = "https://github.com/kaijuleveling";
-            const youtubeLink = "https://www.youtube.com/@kaijuleveling";
+            const supportServerLink = "https://discord.gg/xQF9f9yUEM";
+            const githubLink = "https://github.com/GlaceYT";
+            const websiteLink = "https://www.glaceyt.com";
+            const youtubeLink = "https://www.youtube.com/@GlaceYT";
 
             const embedColor = parseInt(config.embedColor?.replace('#', '') || 'b300ff', 16);
             const components = [];
