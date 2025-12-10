@@ -13,7 +13,6 @@ module.exports = {
                 choices: {
                     main: "🏠 Main Menu",
                     music: "🎵 Music Commands",
-                    playlist: "📋 Playlist Commands",
                     basic: "💜 Basic Commands",
                     utility: "🔧 Utility Commands"
                 }
@@ -29,11 +28,6 @@ module.exports = {
                 name: "Music Commands",
                 emoji: "🎵",
                 description: "Control music playback and settings"
-            },
-            playlist: {
-                name: "Playlist Commands",
-                emoji: "📋",
-                description: "Manage your playlists"
             },
             basic: {
                 name: "Basic Commands",
@@ -63,7 +57,6 @@ module.exports = {
             categories: {
                 title: "## 📂 Available Categories",
                 music: "{emoji} **{name}** - {count} commands",
-                playlist: "{emoji} **{name}** - {count} commands",
                 basic: "{emoji} **{name}** - {count} commands",
                 utility: "{emoji} **{name}** - {count} commands",
                 footer: "**Select a category below to view detailed commands.**"
@@ -75,7 +68,6 @@ module.exports = {
             selectMenu: {
                 placeholder: "📂 Select a category to view commands...",
                 musicDescription: "{count} commands available",
-                playlistDescription: "{count} commands available",
                 basicDescription: "{count} commands available",
                 utilityDescription: "{count} commands available"
             },
@@ -665,18 +657,6 @@ module.exports = {
                 message: "No results found for your query.",
                 note: "Try a different search term or link."
             },
-            success: {
-                titleTrack: "## ✅ Track Added",
-                titlePlaylist: "## ✅ Playlist Added",
-                trackAdded: "Track has been added to the queue.",
-                playlistAdded: "**{count}** tracks have been added to the queue.",
-                nowPlaying: "🎵 Now playing...",
-                queueReady: "⏸️ Queue ready"
-            },
-            errors: {
-                title: "## ❌ Error",
-                message: "An error occurred while processing the request.\nPlease try again later."
-            }
         },
         search: {
             command: {
@@ -698,12 +678,7 @@ module.exports = {
                 message: "No results found for your search query.",
                 note: "Try a different search term."
             },
-            playlistNotSupported: {
-                title: "## ❌ Playlists Not Supported",
-                message: "Playlists are not supported in search.",
-                note: "Use `/play` command for playlists."
-            },
-            results: {
+             results: {
                 title: "## 🔍 Search Results",
                 query: "**Query:** {query}",
                 track: "**{number}.** [{title}]({uri})\n   └ {author} • {duration}"
@@ -714,233 +689,6 @@ module.exports = {
             errors: {
                 title: "## ❌ Error",
                 message: "An error occurred while searching.\nPlease try again later."
-            }
-        }
-    },
-    playlist: {
-        createplaylist: {
-            command: {
-                name: "createplaylist",
-                description: "Create a new playlist"
-            },
-            alreadyExists: {
-                title: "## ❌ Playlist Already Exists",
-                message: "A playlist with the name **\"{name}\"** already exists.",
-                note: "Please choose a different name."
-            },
-            success: {
-                title: "## ✅ Playlist Created",
-                message: "Your playlist **\"{name}\"** has been created successfully!",
-                visibility: "**Visibility:** {visibility}",
-                server: "**Server:** {server}",
-                private: "🔒 Private",
-                public: "🌐 Public"
-            },
-            errors: {
-                title: "## ❌ Error",
-                message: "An error occurred while creating the playlist.\nPlease try again later."
-            }
-        },
-        addsong: {
-            command: {
-                name: "addsong",
-                description: "Add a song to a playlist"
-            },
-            notFound: {
-                title: "## ❌ Playlist Not Found",
-                message: "The playlist **\"{name}\"** does not exist.",
-                note: "Please check the playlist name and try again."
-            },
-            accessDenied: {
-                title: "## 🔒 Access Denied",
-                message: "You don't have permission to modify this playlist.",
-                note: "Only the playlist owner can add songs."
-            },
-            success: {
-                title: "## ✅ Song Added",
-                song: "**Song:** {song}",
-                playlist: "**Playlist:** {playlist}",
-                message: "The song has been successfully added to your playlist!"
-            },
-            errors: {
-                title: "## ❌ Error",
-                message: "An error occurred while adding the song.\nPlease try again later."
-            }
-        },
-        deleteplaylist: {
-            command: {
-                name: "deleteplaylist",
-                description: "Delete a playlist"
-            },
-            notFound: {
-                title: "## ❌ Playlist Not Found",
-                message: "The playlist **\"{name}\"** does not exist.",
-                note: "Please check the playlist name and try again."
-            },
-            accessDenied: {
-                title: "## 🔒 Access Denied",
-                message: "You don't have permission to delete this playlist.",
-                note: "Only the playlist owner can delete it."
-            },
-            success: {
-                title: "## ✅ Playlist Deleted",
-                message: "The playlist **\"{name}\"** has been successfully deleted."
-            },
-            errors: {
-                title: "## ❌ Error",
-                message: "An error occurred while deleting the playlist.\nPlease try again later."
-            }
-        },
-        deletesong: {
-            command: {
-                name: "deletesong",
-                description: "Delete a song from a playlist"
-            },
-            notFound: {
-                title: "## ❌ Playlist Not Found",
-                message: "The playlist **\"{name}\"** does not exist.",
-                note: "Please check the playlist name and try again."
-            },
-            success: {
-                title: "## ✅ Song Deleted",
-                song: "**Song:** {song}",
-                playlist: "**Playlist:** {playlist}",
-                message: "The song has been successfully removed from your playlist."
-            },
-            errors: {
-                title: "## ❌ Error",
-                message: "An error occurred while deleting the song.\nPlease try again later."
-            }
-        },
-        savequeue: {
-            command: {
-                name: "savequeue",
-                description: "Save the current queue as a playlist"
-            },
-            queueEmpty: {
-                title: "## ❌ Queue Empty",
-                message: "The queue is empty. Nothing to save.",
-                note: "Add some songs to the queue first!"
-            },
-            alreadyExists: {
-                title: "## ❌ Playlist Already Exists",
-                message: "A playlist named **\"{name}\"** already exists.",
-                note: "Please choose a different name."
-            },
-            success: {
-                title: "## ✅ Queue Saved!",
-                message: "Queue saved as playlist **\"{name}\"**",
-                tracks: "**Tracks:** {count}"
-            },
-            errors: {
-                title: "## ❌ Error",
-                message: "An error occurred while saving the queue.\nPlease try again later."
-            }
-        },
-        myplaylists: {
-            command: {
-                name: "myplaylists",
-                description: "List all playlists you have created"
-            },
-            noPlaylists: {
-                title: "## 📋 No Playlists Found",
-                message: "You haven't created any playlists yet.",
-                note: "Use `/createplaylist` to create your first playlist!"
-            },
-            title: "## 📂 Your Playlists (Page {currentPage}/{totalPages})",
-            playlistItem: "**{number}.** **{name}**\n   • Visibility: **{visibility}**\n   • Server: {server}\n   • Songs: **{count}**",
-            visibilityPrivate: "🔒 Private",
-            visibilityPublic: "🌐 Public",
-            errors: {
-                title: "## ❌ Error",
-                message: "An error occurred while fetching your playlists.\nPlease try again later."
-            }
-        },
-        allplaylists: {
-            command: {
-                name: "allplaylists",
-                description: "List all public playlists"
-            },
-            noPlaylists: {
-                title: "## 📋 No Public Playlists Found",
-                message: "There are no public playlists available.",
-                note: "Create a public playlist using `/createplaylist`!"
-            },
-            title: "## 🌐 Public Playlists (Page {currentPage}/{totalPages})",
-            playlistItem: "**{number}.** **{name}**\n   • Created by: {creator}\n   • Server: {server}\n   • Songs: **{count}**",
-            errors: {
-                title: "## ❌ Error",
-                message: "An error occurred while fetching public playlists.\nPlease try again later."
-            }
-        },
-        showsongs: {
-            command: {
-                name: "showsongs",
-                description: "Show all songs in a playlist"
-            },
-            notFound: {
-                title: "## ❌ Playlist Not Found",
-                message: "The playlist **\"{name}\"** does not exist.",
-                note: "Please check the playlist name and try again."
-            },
-            accessDenied: {
-                title: "## 🔒 Access Denied",
-                message: "You don't have permission to view this playlist.",
-                note: "This playlist is private and only the owner can view it."
-            },
-            empty: {
-                title: "## 📋 Songs in \"{name}\"",
-                message: "This playlist is empty. Add songs using `/addsong`!"
-            },
-            title: "## 🎵 Songs in \"{name}\" (Page {currentPage}/{totalPages})",
-            errors: {
-                title: "## ❌ Error",
-                message: "An error occurred while showing playlist songs.\nPlease try again later."
-            }
-        },
-        playcustomplaylist: {
-            command: {
-                name: "playcustomplaylist",
-                description: "Play a custom playlist"
-            },
-            notFound: {
-                title: "## ❌ Playlist Not Found",
-                message: "The playlist **\"{name}\"** does not exist.",
-                note: "Please check the playlist name and try again."
-            },
-            accessDenied: {
-                title: "## 🔒 Access Denied",
-                message: "You don't have permission to play this playlist.",
-                note: "This playlist is private and only the owner can play it."
-            },
-            empty: {
-                title: "## ❌ Empty Playlist",
-                message: "The playlist **\"{name}\"** is empty.",
-                note: "Add some songs to the playlist first!"
-            },
-            lavalinkManagerError: {
-                title: "## ❌ Lavalink Manager Error",
-                message: "Lavalink node manager is not initialized.",
-                note: "Please contact the bot administrator."
-            },
-            noNodes: {
-                title: "## ❌ No Lavalink Nodes",
-                message: "No Lavalink nodes are currently available ({connected}/{total} connected).",
-                note: "The bot is attempting to reconnect. Please try again in a moment."
-            },
-            resolveError: {
-                title: "## ❌ Error Resolving Song",
-                message: "Failed to resolve one or more songs from the playlist.",
-                note: "Please check the playlist and try again."
-            },
-            success: {
-                title: "## 🎵 Playing Playlist",
-                message: "Now playing playlist **\"{name}\"**",
-                songs: "**Songs:** {count}"
-            },
-            errors: {
-                title: "## ❌ Error",
-                message: "An error occurred while playing the playlist.\nPlease try again later."
             }
         }
     },

@@ -22,36 +22,6 @@ const spotifyApi = new SpotifyWebApi({
     clientSecret: config.spotifyClientSecret,
 });
 
-async function getSpotifyPlaylistTracks(playlistId) {
-    try {
-        const data = await spotifyApi.clientCredentialsGrant();
-        spotifyApi.setAccessToken(data.body.access_token);
-
-        let tracks = [];
-        let offset = 0;
-        let limit = 100;
-        let total = 0;
-
-        do {
-            const response = await spotifyApi.getPlaylistTracks(playlistId, { limit, offset });
-            total = response.body.total;
-            offset += limit;
-
-            for (const item of response.body.items) {
-                if (item.track && item.track.name && item.track.artists) {
-                    const trackName = `${item.track.name} - ${item.track.artists.map(a => a.name).join(', ')}`;
-                    tracks.push(trackName);
-                }
-            }
-        } while (tracks.length < total);
-
-        return tracks;
-    } catch (error) {
-        console.error("Error fetching Spotify playlist tracks:", error);
-        return [];
-    }
-}
-
 module.exports = {
     data: data,
     run: async (client, interaction) => {
@@ -160,31 +130,6 @@ module.exports = {
                 }
             }
 
-            let tracksToQueue = [];
-            let isPlaylist = false;
-
-            if (query.includes('spotify.com')) {
-                try {
-                    const spotifyData = await getData(query);
-
-                    if (spotifyData.type === 'track') {
-                        const trackName = `${spotifyData.name} - ${spotifyData.artists.map(a => a.name).join(', ')}`;
-                        tracksToQueue.push(trackName);
-                    } else if (spotifyData.type === 'playlist') {
-                        isPlaylist = true;
-                        const playlistId = query.split('/playlist/')[1].split('?')[0]; 
-                        tracksToQueue = await getSpotifyPlaylistTracks(playlistId);
-                    }
-                } catch (err) {
-                    console.error('Error fetching Spotify data:', err);
-                    return sendErrorResponse(
-                        interaction,
-                        t.spotifyError.title + '\n\n' +
-                        t.spotifyError.message + '\n' +
-                        t.spotifyError.note,
-                        5000
-                    );
-                }
             } else {
                 let resolve;
                 try {
@@ -210,29 +155,6 @@ module.exports = {
                     );
                 }
 
-                if (resolve.loadType === 'playlist') {
-                    isPlaylist = true;
-                    for (const track of resolve.tracks) {
-                        track.info.requester = interaction.user.username;
-                        player.queue.add(track);
-                        requesters.set(track.info.uri, interaction.user.username);
-                    }
-                } else if (resolve.loadType === 'search' || resolve.loadType === 'track') {
-                    const track = resolve.tracks.shift();
-                    track.info.requester = interaction.user.username;
-                    player.queue.add(track);
-                    requesters.set(track.info.uri, interaction.user.username);
-                } else {
-                    return sendErrorResponse(
-                        interaction,
-                        t.noResults.title + '\n\n' +
-                        t.noResults.message + '\n' +
-                        t.noResults.note,
-                        5000
-                    );
-                }
-            }
-
             let queuedTracks = 0;
 
             const maxTracks = 200;
@@ -250,10 +172,6 @@ module.exports = {
                     console.error(`Error resolving track ${trackQuery}:`, error);
                 }
             }
-            
-            if (tracksToQueue.length > maxTracks) {
-                console.warn(`Playlist truncated: ${tracksToQueue.length} tracks requested, only ${maxTracks} queued`);
-            }
 
             let connectionAttempts = 0;
             while (!player.connected && connectionAttempts < 20) {
@@ -262,19 +180,6 @@ module.exports = {
             }
 
             if (!player.playing && !player.paused) player.play();
-
-            const embedColor = parseInt(config.embedColor?.replace('#', '') || '1db954', 16);
-            const successContainer = new ContainerBuilder()
-                .setAccentColor(embedColor)
-                .addTextDisplayComponents(
-                    (textDisplay) => textDisplay.setContent(
-                        (isPlaylist ? t.success.titlePlaylist : t.success.titleTrack) + '\n\n' +
-                        (isPlaylist 
-                            ? t.success.playlistAdded.replace('{count}', queuedTracks)
-                            : t.success.trackAdded) + '\n\n' +
-                        (player.playing ? t.success.nowPlaying : t.success.queueReady)
-                    )
-                );
 
             const message = await interaction.editReply({ 
                 components: [successContainer],

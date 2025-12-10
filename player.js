@@ -186,25 +186,6 @@ async function initializePlayer(client) {
                 Object.assign(t, langSync.console.player);
             }
         }
-
-        try {
-            await playlistCollection.updateOne(
-                { guildId, name: '__HISTORY__' },
-                { 
-                    $push: { 
-                        songs: { 
-                            $each: [trackUri], 
-                            $slice: -100 
-                        } 
-                    } 
-                },
-                { upsert: true }
-            );
-        } catch (error) {
-            const lang = getLangSync();
-            console.error(lang.console?.player?.errorSavingHistory || "Error saving to history:", error);
-        }
-
         try {
             await cleanupPreviousTrackMessages(channel, guildId);
             
